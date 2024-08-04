@@ -1913,6 +1913,12 @@
 		(uuid "50c0f46b-68c6-4d94-b62e-2c75f6c4c3b6")
 	)
 	(junction
+		(at 215.9 64.77)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "68f0ece6-4fe4-4dff-8c88-27f97cc4a172")
+	)
+	(junction
 		(at 227.33 49.53)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2027,6 +2033,16 @@
 			(type default)
 		)
 		(uuid "d0c87978-927a-480d-8411-666d9a3b60b4")
+	)
+	(wire
+		(pts
+			(xy 215.9 64.77) (xy 219.71 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e2b682f2-d45c-4fc1-ae65-aa6bd5b72540")
 	)
 	(wire
 		(pts
@@ -5750,6 +5766,17 @@
 		)
 		(uuid "338620c6-08b4-47ab-9bbe-c3380802b70e")
 	)
+	(text "Delay the operation\nof the buzzer/LED\n\n10M/10u = 100s\nBut cap will be <10u due \nto dc bias"
+		(exclude_from_sim no)
+		(at 182.626 67.564 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6333c1be-d308-4c5d-8455-8daa1a185afb")
+	)
 	(text "Limit resistor \nis on 555 end"
 		(exclude_from_sim no)
 		(at 214.122 48.26 0)
@@ -5760,7 +5787,7 @@
 		)
 		(uuid "76ed9077-41af-4098-8e3b-0a60d0cf7b90")
 	)
-	(text "f = 1.44/((0 + 2*1*10^6)*1*10^-6) = 0.72 Hz"
+	(text "f = 1.44/((0 + 2*1*10^3)*0.1*10^-6) = 7200 Hz"
 		(exclude_from_sim no)
 		(at 88.9 53.34 0)
 		(effects
@@ -6209,6 +6236,114 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Q_NMOS_GSD")
+		(at 224.79 64.77 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0e51fb61-bf72-4346-9417-14dda2e17b9d")
+		(property "Reference" "Q2"
+			(at 231.14 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DMN6140L-7"
+			(at 231.14 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23"
+			(at 229.87 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 224.79 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "N-MOSFET transistor, gate/source/drain"
+			(at 224.79 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "manf" "Diodes Inc"
+			(at 224.79 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "mpn" "DMN6140L-7"
+			(at 224.79 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "60V"
+			(at 219.71 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Current" "2A"
+			(at 219.71 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "5c31b7dd-5dbd-4099-b18a-a018c4717b14")
+		)
+		(pin "2"
+			(uuid "1c4d6623-7099-4b2a-9821-2c36dd163333")
+		)
+		(pin "3"
+			(uuid "eca43d45-cd5e-4388-89ba-2713f565cc7d")
+		)
+		(instances
+			(project "disc_finder"
+				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
+					(reference "Q2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 111.76 77.47 0)
 		(unit 1)
@@ -6509,7 +6644,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1M"
+		(property "Value" "1k"
 			(at 157.734 74.93 90)
 			(effects
 				(font
@@ -6572,7 +6707,7 @@
 				(hide yes)
 			)
 		)
-		(property "mpn" "R_0603_1M_1%"
+		(property "mpn" "R_0603_1k_1%"
 			(at 156.21 74.93 0)
 			(effects
 				(font
@@ -6723,6 +6858,127 @@
 			(project "disc_finder"
 				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
 					(reference "#PWR016")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 215.9 68.58 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5c4ebfe5-09d7-4e5b-a620-9d2347c80cf3")
+		(property "Reference" "C3"
+			(at 209.804 67.818 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10u"
+			(at 209.804 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 216.8652 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 215.9 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 215.9 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Type" ""
+			(at 215.9 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Voltage" "6.3V"
+			(at 212.09 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "%"
+			(at 219.71 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Current" "A"
+			(at 212.09 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "manf" ""
+			(at 215.9 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "mpn" "C_0603_10u_6.3V_X5R"
+			(at 215.9 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8ff13921-d5d4-4a22-ac78-8cfb31690032")
+		)
+		(pin "2"
+			(uuid "3ef507f8-a6e5-43bf-b15a-472f6be535e9")
+		)
+		(instances
+			(project "disc_finder"
+				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
+					(reference "C3")
 					(unit 1)
 				)
 			)
@@ -7020,7 +7276,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.intersil.com/content/dam/Intersil/documents/icm7/icm7555-56.pdf"
+		(property "Datasheet" "https://www.renesas.com/us/en/document/dst/icm7555-icm7556-datasheet"
 			(at 157.48 80.01 0)
 			(effects
 				(font
@@ -7150,6 +7406,71 @@
 			(project "disc_finder"
 				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
 					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 215.9 72.39 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "87ac4609-61d2-4ed7-a1e4-8a0f3dabc04d")
+		(property "Reference" "#PWR018"
+			(at 215.9 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 215.9 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 215.9 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 215.9 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 215.9 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9f11acc2-05a5-4f24-b5d6-116a8c005351")
+		)
+		(instances
+			(project "disc_finder"
+				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
+					(reference "#PWR018")
 					(unit 1)
 				)
 			)
@@ -7431,6 +7752,111 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 212.09 64.77 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9b9f1c6b-0853-4f09-9dc2-c58f39a12ddf")
+		(property "Reference" "R5"
+			(at 213.36 62.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10M"
+			(at 213.614 64.77 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 212.09 66.548 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 212.09 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 212.09 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "%"
+			(at 209.55 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Current" "A"
+			(at 212.09 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "manf" ""
+			(at 212.09 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "mpn" "R_0603_10M_5%"
+			(at 212.09 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b4a63dae-8706-4476-b396-0633c2dacee7")
+		)
+		(pin "2"
+			(uuid "a2863ed7-2f79-4c9b-987f-fe26185670d2")
+		)
+		(instances
+			(project "disc_finder"
+				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
+					(reference "R5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:Conn_01x02_Pin")
 		(at 71.12 111.76 0)
 		(unit 1)
@@ -7652,71 +8078,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 227.33 59.69 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d736df11-f7f3-4ab5-badd-15a9472eabf1")
-		(property "Reference" "#PWR09"
-			(at 227.33 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 227.33 64.77 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 227.33 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 227.33 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 227.33 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c89b0915-07c3-4e8e-a66e-b78ac35b43bf")
-		)
-		(instances
-			(project "disc_finder"
-				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
-					(reference "#PWR09")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+BATT")
 		(at 80.01 111.76 0)
 		(unit 1)
@@ -7860,6 +8221,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:VDD")
+		(at 208.28 64.77 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e1202d77-5f56-4f97-b9b2-40090ccde3bd")
+		(property "Reference" "#PWR017"
+			(at 208.28 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VDD"
+			(at 208.28 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 208.28 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 208.28 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
+			(at 208.28 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4e26eae0-550a-49a1-bb0c-8423da206cbd")
+		)
+		(instances
+			(project "disc_finder"
+				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
+					(reference "#PWR017")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:PWR_FLAG")
 		(at 22.86 29.21 180)
 		(unit 1)
@@ -7992,6 +8419,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 227.33 69.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fbb2df9b-e08e-4061-adb6-256e4868817f")
+		(property "Reference" "#PWR09"
+			(at 227.33 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 227.33 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 227.33 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "03b4a75e-53aa-4a83-a949-42e72a5203c6")
+		)
+		(instances
+			(project "disc_finder"
+				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
+					(reference "#PWR09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 101.6 68.58 0)
 		(unit 1)
@@ -8009,7 +8501,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1u"
+		(property "Value" "0.1u"
 			(at 95.504 69.85 0)
 			(effects
 				(font
@@ -8053,7 +8545,7 @@
 				)
 			)
 		)
-		(property "Voltage" "16V"
+		(property "Voltage" "50V"
 			(at 97.79 72.39 0)
 			(effects
 				(font
@@ -8088,7 +8580,7 @@
 				(hide yes)
 			)
 		)
-		(property "mpn" "C_0603_1u_16V_X7R"
+		(property "mpn" "C_0603_0.1u_50V_X7R"
 			(at 101.6 68.58 0)
 			(effects
 				(font
