@@ -1,0 +1,172 @@
+# Example KiPlot config file
+kibot:
+  version: 1
+
+import:
+  - file: JLCPCB
+
+preflight:
+  run_erc: true
+  update_xml: true
+  run_drc: true
+  set_text_variables:
+    - name: 'rev'
+      command: 'if [ $(git describe --tags | wc -w) -gt 0 ]; then git describe --tags | sed -e "s/\([r,R][0-9]\+\)*$//g"; else echo $CI_COMMIT_SHORT_SHA; fi'
+    - name: 'date'
+      expand_kibot_patterns: true
+      text: '%D'
+    - name: 'name'
+      expand_kibot_patterns: true
+      command: 'echo $KIBOT_PCB_NAME | rev | cut -d"/" -f1 | rev | cut -d"-" -f1'
+    - name: 'title'
+      expand_kibot_patterns: true
+      command: 'echo $KIBOT_PCB_NAME | rev | cut -d"/" -f1 | rev | cut -d"." -f1 '
+  fill_zones: true
+  ignore_unconnected: false
+
+global:
+  environment:
+    user_templates: "${CI_PROJECT_DIR}/.gitlab"
+
+
+outputs:
+  - name: 'print_sch'
+    comment: "Print schematic (PDF)"
+    type: pdf_sch_print
+    dir: .
+    options:
+      output: "%f_%r_%i.%x"
+
+  - name: 'print_pcb'
+    comment: "Print Top and Bottom Copper+Silk"
+    type: pcb_print
+    dir: .
+    options:
+      output: "%f_%r_PCB.%x"
+      pages: 
+        - layers:
+          - layer: F.Cu
+          - layer: F.SilkS
+          - layer: Edge.Cuts
+        - layers:
+          - layer: B.Cu
+          - layer: B.SilkS
+          - layer: Edge.Cuts
+
+  - name: '_bom'
+    type: bom
+    dir: .
+    options:
+      columns: 
+        - field: Value 
+          name: value
+        - field: Quantity Per PCB
+          name: qty
+        - field: Footprint
+          name: footprint
+        - mpn
+        - manf
+        - field: References
+          name: refs 
+      exclude_filter: ""
+      output: "%f_%r_%i.%x"
+      expand_text_vars: true
+    disable_run_by_default: true
+
+  - name: 'bom_csv'  
+    type: bom
+    dir: .
+    extends: "_bom"
+    options:
+      csv:
+        separator: ';'
+        hide_pcb_info: true
+        hide_stats_info: true
+      format: "CSV"
+
+  - name: 'bom_xlsx'  
+    type: bom
+    dir: .
+    extends: '_bom' 
+    options:
+      xlsx:
+        # this is a relative path unfortunately
+        logo: ".gitlab/micromelon_default/meta/icon.png"
+        hide_pcb_info: true
+        hide_stats_info: true
+      format: "XLSX"
+
+  # - name: 'drill'
+  #   comment: "excellon drill files"
+  #   type: excellon
+  #   dir: Gerbers
+  #   # options:
+
+  - name: 'step'
+    comment: "Step file of pcb"
+    type: step
+    dir: .
+    options:
+      output: '%f_%r.%x'
+      download: false
+      subst_models: true
+
+  - name: 'neo_position'
+    comment: "Pick and place"
+    type: position
+    options:
+      output: '%f_%r_cpl.%x'
+      format: CSV
+      units: millimeters
+      separate_files_for_front_and_back: false
+      only_smd: true
+  
+  - name: 'stencil'
+    comment: '3D printable stencil for when you forgot to order it'
+    type: stencil_3d
+    dir: '3D_Stencil'
+    options: 
+      output: '%f_%r_%i.%x'
+
+  - name: 'diff_pcb'
+    comment: "Diff for visual comparison"
+    type: diff
+    dir: .
+    options: 
+      only_different: true
+      old: KIBOT_TAG-0
+
+  - name: 'diff_sch'
+    comment: "Diff for visual comparison"
+    type: diff
+    dir: .
+    options: 
+      only_different: true
+      pcb: false
+      old: KIBOT_TAG-0
+  
+  - name: 'JLCPCB_compress'
+    type: compress
+    extends: _JLCPCB_compress
+    options:
+      output: '%f_JLC.%x'
+    
+
+groups:
+  - name: pcb
+    outputs:
+      - JLCPCB_compress
+      - neo_position
+      - print_pcb
+      - stencil
+
+  - name: sch
+    outputs:
+      - bom_csv
+      - bom_xlsx
+      - print_sch
+...
+definitions:
+  _KIBOT_POS_ENABLED: false
+  _KIBOT_BOM_ENABLED: false
+  _KIBOT_MANF_DIR_COMP: "."
