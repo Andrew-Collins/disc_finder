@@ -24,10 +24,6 @@ preflight:
   fill_zones: true
   ignore_unconnected: false
 
-global:
-  environment:
-    user_templates: "${CI_PROJECT_DIR}/.gitlab"
-
 
 outputs:
   - name: 'print_sch'
@@ -91,7 +87,6 @@ outputs:
     options:
       xlsx:
         # this is a relative path unfortunately
-        logo: ".gitlab/micromelon_default/meta/icon.png"
         hide_pcb_info: true
         hide_stats_info: true
       format: "XLSX"
