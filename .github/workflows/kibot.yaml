@@ -5,8 +5,10 @@ name: ""
 on:
   push:
     paths:
-      - '*.kicad_sch'
-      - '*.kicad_pcb'
+      - '**/*.kicad_sch'
+      - '**/*.kicad_pro'
+      - '**/*.kicad_dru'
+      - '**/*.kicad_pcb'
       - '.github/workflows/kibot.yaml'
   pull_request:
     paths:
