@@ -17,8 +17,6 @@ on:
     types: [run_qs]
 
 env:
-  SUFF_SCH: run_drc sch
-  SUFF_PCB: run_erc,update_xml,set_text_variables pcb
   DIR: disc_finder
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -33,9 +31,39 @@ jobs:
         # So we can run a diff between last 2 changes
         fetch-depth: '0'
 
-    - name: dev
+    - name: kibot
+      env:
+        SUFF_SCH: run_drc sch
+        SUFF_PCB: run_erc,update_xml,set_text_variables pcb
       run: |
         SUFFIX=$SUFF_SCH
+        kibot -e $DIR/$DIR.kicad_sch -c default.kibot.yaml -d Fabrication/$DIR -s $SUFFIX
+        SUFFIX=$SUFF_PCB
+        kibot -e $DIR/$DIR.kicad_sch -c default.kibot.yaml -d Fabrication/$DIR -s $SUFFIX
+
+    - name: Retrieve results
+      uses: actions/upload-artifact@v4
+      with:
+        name: Automatic_outputs
+        path: Fabrication
+  main:
+    runs-on: ubuntu-latest
+    container: ghcr.io/inti-cmnb/kicad8_auto:latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # So we can run a diff between last 2 changes
+        fetch-depth: '0'
+
+    - name: kibot
+      env:
+        SUFF_SCH: run_drc sch
+        SUFF_PCB: run_erc,update_xml,set_text_variables pcb
+      run: |
+        SUFFIX=$SUFF_SCH
+        kibot -e $DIR/$DIR.kicad_sch -c default.kibot.yaml -d Fabrication/$DIR -s $SUFFIX
+        SUFFIX=$SUFF_PCB
         kibot -e $DIR/$DIR.kicad_sch -c default.kibot.yaml -d Fabrication/$DIR -s $SUFFIX
 
     - name: Retrieve results
