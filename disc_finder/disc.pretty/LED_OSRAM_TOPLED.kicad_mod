@@ -1,0 +1,139 @@
+(footprint "LED_OSRAM_TOPLED"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at -0.775 -7 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "53976623-48ce-4e49-81fc-029beebd7d4d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "LED_OSRAM_TOPLED"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "f7dd9575-c001-4228-a00a-2dacb0ee9884")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "00a83b7f-a5c1-4ec7-a110-baad0b2e344e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4341a48a-6895-424e-ae63-d3f04651324f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f0b12a09-fe10-4709-ae4a-38ea7e9179f5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.5 -1.7)
+		(end -1.5 1.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "3be13bb6-fb49-4e5e-9a65-779f44eefd92")
+	)
+	(fp_line
+		(start -1.4 -2.375)
+		(end 1.4 -2.375)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "36d3b2e9-97bc-40a9-a89e-bf72f91cacc6")
+	)
+	(fp_line
+		(start 1.5 -1.7)
+		(end 1.5 1.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "c24f7461-b5bf-403d-9f55-e9497a641cf1")
+	)
+	(fp_rect
+		(start -1.6 -2.5)
+		(end 1.6 2.5)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "494bb805-a075-43f6-911d-073515898dd8")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "c54e6861-f3f3-45da-85a4-c5be6b4e1dad")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at 0 -1.5)
+		(size 2.6 1.5)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(thermal_bridge_angle 45)
+		(uuid "c324b35e-c08d-403e-a2be-42b0ecf5aba4")
+	)
+	(pad "2" smd roundrect
+		(at 0 1.5)
+		(size 2.6 1.5)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(thermal_bridge_angle 45)
+		(uuid "42b8500f-ac46-43e7-b105-85b49a5ecc98")
+	)
+)

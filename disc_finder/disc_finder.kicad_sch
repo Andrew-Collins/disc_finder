@@ -5753,6 +5753,16 @@
 			"MyLIYDB4nRFBBoPB64wIMhgMXudfRpOh3rIcn0QAAAAASUVORK5CYII="
 		)
 	)
+	(text "Adjust as required"
+		(exclude_from_sim no)
+		(at 254.254 44.45 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "28259916-d578-45da-ac26-552f6d5d1421")
+	)
 	(text "TIMER"
 		(exclude_from_sim no)
 		(at 80.01 34.036 0)
@@ -6544,83 +6554,6 @@
 			(project "disc_finder"
 				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
 					(reference "#PWR013")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 243.84 35.56 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3a493061-e978-4d0b-b111-22a058fc1a37")
-		(property "Reference" "R4"
-			(at 241.3 35.56 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "330R"
-			(at 243.84 35.56 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 245.618 35.56 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 243.84 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 243.84 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "mpn" "R_0603_330R_5%"
-			(at 243.84 35.56 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0ef9dc18-979e-4068-91bf-04eb16f27b91")
-		)
-		(pin "2"
-			(uuid "06c04831-5641-4ecb-b3f2-2a6813abf901")
-		)
-		(instances
-			(project "disc_finder"
-				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
-					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -7543,6 +7476,83 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 243.84 43.18 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9123f0e2-04f4-458c-bdf6-a6ba808494c3")
+		(property "Reference" "R4"
+			(at 241.3 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100R"
+			(at 243.84 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 245.618 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 243.84 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 243.84 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "mpn" "R_0603_100R_1%"
+			(at 243.84 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5d917df6-911e-4974-b89d-c236ef234647")
+		)
+		(pin "2"
+			(uuid "d151559b-0075-4582-993d-b346ac3ac05d")
+		)
+		(instances
+			(project "disc_finder"
+				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
+					(reference "R4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:+BATT")
 		(at 22.86 29.21 0)
 		(unit 1)
@@ -8009,16 +8019,16 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 243.84 43.18 90)
+		(at 243.84 35.56 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "d6aedf8c-e6e8-4abf-adfd-91b0b6e331dc")
+		(uuid "d1bcf4d7-45d3-4efb-8774-7908f73ca1b0")
 		(property "Reference" "D1"
-			(at 247.65 43.4974 90)
+			(at 247.65 35.8774 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8027,7 +8037,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 247.65 46.0374 90)
+			(at 247.65 38.4174 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8035,8 +8045,8 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
-			(at 243.84 43.18 0)
+		(property "Footprint" "disc:LED_OSRAM_TOPLED"
+			(at 243.84 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8045,7 +8055,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 243.84 43.18 0)
+			(at 243.84 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8054,7 +8064,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 243.84 43.18 0)
+			(at 243.84 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8063,13 +8073,13 @@
 			)
 		)
 		(pin "2"
-			(uuid "3445e31b-52f3-4e7a-b6ce-a0695187b0a4")
+			(uuid "fa8165c6-a1d7-45f1-9b97-43a0a7f7a3df")
 		)
 		(pin "1"
-			(uuid "e5b830a2-6eea-447f-886e-601f9269fa82")
+			(uuid "6a1c82f4-1cb2-486c-91d1-6a6c76bcc3d1")
 		)
 		(instances
-			(project ""
+			(project "disc_finder"
 				(path "/bc8f2379-d0e7-4939-b0df-9bb187dda8ee"
 					(reference "D1")
 					(unit 1)
