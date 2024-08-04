@@ -16,63 +16,6 @@ on:
   repository_dispatch:
     types: [run_qs]
 
-
-commands:
-  get_files:
-    - FILES=$(find . -name *$SEARCH -not -path "./.gitlab/*")
-  get_dirs:
-    - ${{ commands.get_files }}
-    - | 
-      if [[ $FILES == "" ]]; then
-        DIRS=""
-      else
-        DIRS=$(dirname $FILES)
-      fi
-  sch_from_pro: 
-    - 'SCHEMS=$(for f in $FILES ; do echo "${f%.*}.kicad_sch"; done)'
-    - 'SCHEMS=$(for f in $SCHEMS ; do echo "${f##**/}"; done)'
-  get_dirs_filt:
-    - ${{ commands.get_files }}
-    - | 
-      FILT_FILES=""
-      FILT_DIRS=""
-      for f in $FILES
-      do 
-        dir=$(dirname $f)
-        echo $dir
-        if [[ "$dir" =~ ^.?\/?[0-9]{6}-.*$ || "$dir" =~ .+_panel ]] 
-        then 
-          FILT_FILES=$(echo "$FILT_FILES $f")
-          FILT_DIRS=$(echo "$FILT_DIRS $dir")
-        fi
-      done
-      FILES=$FILT_FILES
-      DIRS=$FILT_DIRS
-  dir_arr:
-    - ${{ commands.get_dirs_filt }}
-    - |
-      END=$(echo $DIRS | wc -w)
-      dir_arr=($DIRS)
-  kibot: 
-    - 'SEARCH=".kicad_pro"'
-    - ${{ commands.dir_arr }}
-    - !reference [.commands, sch_from_pro]  
-    - sch_arr=($SCHEMS)
-    - |
-      cd $CI_PROJECT_DIR
-      for i in $(seq 1 $END)
-        do
-          if [[ ${dir_arr[i-1]} == "./Frame" ]]; then
-            continue
-          fi
-          echo ${dir_arr[i-1]} 
-          echo ${sch_arr[i-1]} 
-          kibot -e ${dir_arr[i-1]}/${sch_arr[i-1]} -c $CI_PROJECT_DIR/default.kibot.yaml -d $CI_PROJECT_DIR/Fabrication/${dir_arr[i-1]} -s $SUFFIX
-          mv $CI_PROJECT_DIR/Fabrication/${dir_arr[i-1]}/*.zip Fabrication/ 2> /dev/null || true
-        done
-    - cd $CI_PROJECT_DIR
-
-
 env:
   SUFF_SCH: run_drc sch
   SUFF_PCB: run_erc,update_xml,set_text_variables pcb
