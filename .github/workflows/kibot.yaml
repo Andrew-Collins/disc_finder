@@ -9,12 +9,16 @@ on:
       - '**/*.kicad_pro'
       - '**/*.kicad_dru'
       - '**/*.kicad_pcb'
-      - '.github/workflows/kibot.yaml'
+      - '**/*.kibot.yaml'
+      - '.github/workflows/*.yaml'
   pull_request:
     paths:
-      - '*.kicad_sch'
-      - '*.kicad_pcb'
-      - '.github/workflows/kibot.yaml'
+      - '**/*.kicad_sch'
+      - '**/*.kicad_pro'
+      - '**/*.kicad_dru'
+      - '**/*.kicad_pcb'
+      - '**/*.kibot.yaml'
+      - '.github/workflows/*.yaml'
   repository_dispatch:
     types: [run_qs]
 
