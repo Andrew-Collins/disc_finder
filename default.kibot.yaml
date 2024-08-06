@@ -18,7 +18,7 @@ preflight:
       text: '%D'
     - name: 'name'
       expand_kibot_patterns: true
-      command: 'echo $KIBOT_PCB_NAME | rev | cut -d"/" -f1 | rev | cut -d"-" -f1'
+      command: 'echo $KIBOT_PCB_NAME | rev | cut -d"/" -f1 | rev | cut -d"." -f1'
     - name: 'title'
       expand_kibot_patterns: true
       command: 'echo $KIBOT_PCB_NAME | rev | cut -d"/" -f1 | rev | cut -d"." -f1 '
