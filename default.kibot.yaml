@@ -1,4 +1,5 @@
 # Example KiPlot config file
+#
 kibot:
   version: 1
 
