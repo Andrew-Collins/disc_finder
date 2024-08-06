@@ -677,5 +677,10 @@
       "Root"
     ]
   ],
-  "text_variables": {}
+  "text_variables": {
+    "date": "",
+    "name": "",
+    "rev": "",
+    "title": ""
+  }
 }
