@@ -7171,8 +7171,8 @@
 			(justify left bottom)
 		)
 	)
-	(gr_text "Rev: ${rev}"
-		(at 145.325 109.575 0)
+	(gr_text "-${rev}"
+		(at 139.6 109.65 0)
 		(layer "F.SilkS")
 		(uuid "8a300cc0-8988-4439-a615-28e307fb59a5")
 		(effects
