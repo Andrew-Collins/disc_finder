@@ -72,11 +72,16 @@ jobs:
       id: get_tag
       run: echo "version=$(git log --format=%B -n 1 HEAD | tail -n 1)" >> $GITHUB_OUTPUT
 
-    - name: push_tag
+    - name: set_tag
       run: | 
         next_version=${{ steps.get_tag.outputs.version }}
         git tag -a "$next_version" -m "Version $next_version"
-        git push --follow-tags
+
+    - name: push_tag
+      uses: ad-m/github-push-action@master
+      with:
+        push_only_tags: true
+        tags: true
 
     - name: kibot
       env:
