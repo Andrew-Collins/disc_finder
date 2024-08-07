@@ -145,7 +145,7 @@ outputs:
     type: compress
     extends: _JLCPCB_compress
     options:
-      output: '%f_JLC.%x'
+      output: '%f_%r_JLC.%x'
     
 
 groups:
