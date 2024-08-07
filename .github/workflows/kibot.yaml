@@ -93,10 +93,14 @@ jobs:
         SUFFIX=$SUFF_PCB
         kibot -e $DIR/$DIR.kicad_sch -c default.kibot.yaml -d Fabrication/$DIR -s $SUFFIX
 
+
+    - name: list_artifacts
+      run: ls Fabrication/
+
     - name: zip_fab
       run: |
         apt update && apt install -y zip
-        zip ${{ github.event.repository.name }}-${{ steps.get_tag.outputs.version }}-All.zip Fabrication
+        zip -r ${{ github.event.repository.name }}-${{ steps.get_tag.outputs.version }}-All.zip Fabrication
 
     - name: Release
       uses: softprops/action-gh-release@v2
