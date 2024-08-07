@@ -12,7 +12,7 @@ preflight:
   run_drc: true
   set_text_variables:
     - name: 'rev'
-      command: 'if [ $(git describe --tags | wc -w) -gt 0 ]; then git describe --tags | sed -e "s/\([r,R][0-9]\+\)*$//g"; else echo $CI_COMMIT_SHORT_SHA; fi'
+      command: 'if [ $(git describe --tags | wc -w) -gt 0 ]; then git describe --tags | sed -e "s/\([r,R][0-9]\+\)*$//g"; else echo ${GITHUB_SHA}; fi'
     - name: 'date'
       expand_kibot_patterns: true
       text: '%D'
