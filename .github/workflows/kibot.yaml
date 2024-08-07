@@ -94,7 +94,9 @@ jobs:
         kibot -e $DIR/$DIR.kicad_sch -c default.kibot.yaml -d Fabrication/$DIR -s $SUFFIX
 
     - name: zip_fab
-      run: zip ${{ github.event.repository.name }}-${{ steps.get_tag.outputs.version }}-All.zip Fabrication
+      run: |
+        apt update && apt install -y zip
+        zip ${{ github.event.repository.name }}-${{ steps.get_tag.outputs.version }}-All.zip Fabrication
 
     - name: Release
       uses: softprops/action-gh-release@v2
