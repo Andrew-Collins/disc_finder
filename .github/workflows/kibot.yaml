@@ -83,6 +83,9 @@ jobs:
         push_only_tags: true
         tags: true
 
+    - name: pull_tags
+      run: git pull --tags
+
     - name: kibot
       env:
         SUFF_SCH: run_drc sch
