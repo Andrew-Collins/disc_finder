@@ -5,14 +5,20 @@ name: ""
 on:
   push:
     paths:
-      - '*.kicad_sch'
-      - '*.kicad_pcb'
-      - '.github/workflows/kibot.yaml'
-  pull_request:
-    paths:
-      - '*.kicad_sch'
-      - '*.kicad_pcb'
-      - '.github/workflows/kibot.yaml'
+      - '**/*.kicad_sch'
+      - '**/*.kicad_pro'
+      - '**/*.kicad_dru'
+      - '**/*.kicad_pcb'
+      - '**/*.kibot.yaml'
+      - '.github/workflows/*.yaml'
+  # pull_request:
+  #   paths:
+  #     - '**/*.kicad_sch'
+  #     - '**/*.kicad_pro'
+  #     - '**/*.kicad_dru'
+  #     - '**/*.kicad_pcb'
+  #     - '**/*.kibot.yaml'
+  #     - '.github/workflows/*.yaml'
   repository_dispatch:
     types: [run_qs]
 
@@ -46,6 +52,7 @@ jobs:
       with:
         name: Automatic_outputs
         path: Fabrication
+
   main:
     runs-on: ubuntu-latest
     container: ghcr.io/inti-cmnb/kicad8_auto:latest
@@ -55,6 +62,29 @@ jobs:
       with:
         # So we can run a diff between last 2 changes
         fetch-depth: '0'
+
+    - name: git_setup
+      run: |
+        git config --global user.name "release"
+        git config --global user.email "release@github.com"
+
+    - name: get_tag
+      id: get_tag
+      run: echo "version=$(git log --format=%B -n 1 HEAD | tail -n 1)" >> $GITHUB_OUTPUT
+
+    - name: set_tag
+      run: | 
+        next_version=${{ steps.get_tag.outputs.version }}
+        git tag -a "$next_version" -m "Version $next_version"
+
+    - name: push_tag
+      uses: ad-m/github-push-action@master
+      with:
+        push_only_tags: true
+        tags: true
+
+    - name: pull_tags
+      run: git pull --tags
 
     - name: kibot
       env:
@@ -66,8 +96,26 @@ jobs:
         SUFFIX=$SUFF_PCB
         kibot -e $DIR/$DIR.kicad_sch -c default.kibot.yaml -d Fabrication/$DIR -s $SUFFIX
 
-    - name: Retrieve results
-      uses: actions/upload-artifact@v4
+
+    - name: list_artifacts
+      run: ls Fabrication/
+
+    - name: zip_fab
+      run: |
+        apt update && apt install -y zip
+        zip -r ${{ github.event.repository.name }}-${{ steps.get_tag.outputs.version }}-All.zip Fabrication
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
       with:
-        name: Automatic_outputs
-        path: Fabrication
+        files: |
+          *.zip
+          Fabrication/**/*.zip
+        tag_name: ${{ steps.get_tag.outputs.version }}
+          
+
+    # - name: Retrieve results
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: Automatic_outputs
+    #     path: Fabrication

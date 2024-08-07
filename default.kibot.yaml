@@ -1,4 +1,5 @@
 # Example KiPlot config file
+#
 kibot:
   version: 1
 
@@ -11,13 +12,13 @@ preflight:
   run_drc: true
   set_text_variables:
     - name: 'rev'
-      command: 'if [ $(git describe --tags | wc -w) -gt 0 ]; then git describe --tags | sed -e "s/\([r,R][0-9]\+\)*$//g"; else echo $CI_COMMIT_SHORT_SHA; fi'
+      command: 'if [ $(git describe --tags | wc -w) -gt 0 ]; then git describe --tags | sed -e "s/\([r,R][0-9]\+\)*$//g"; else echo dev_${GITHUB_SHA} | cut -c -7; fi'
     - name: 'date'
       expand_kibot_patterns: true
       text: '%D'
     - name: 'name'
       expand_kibot_patterns: true
-      command: 'echo $KIBOT_PCB_NAME | rev | cut -d"/" -f1 | rev | cut -d"-" -f1'
+      command: 'echo $KIBOT_PCB_NAME | rev | cut -d"/" -f1 | rev | cut -d"." -f1'
     - name: 'title'
       expand_kibot_patterns: true
       command: 'echo $KIBOT_PCB_NAME | rev | cut -d"/" -f1 | rev | cut -d"." -f1 '
@@ -144,7 +145,7 @@ outputs:
     type: compress
     extends: _JLCPCB_compress
     options:
-      output: '%f_JLC.%x'
+      output: '%f_%r_JLC.%x'
     
 
 groups:
