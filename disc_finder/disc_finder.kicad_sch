@@ -4,6 +4,11 @@
 	(generator_version "8.0")
 	(uuid "bc8f2379-d0e7-4939-b0df-9bb187dda8ee")
 	(paper "A4")
+	(title_block
+		(title "${title}")
+		(date "${date}")
+		(rev "${rev}")
+	)
 	(lib_symbols
 		(symbol "Connector:Conn_01x02_Pin"
 			(pin_names
