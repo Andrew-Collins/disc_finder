@@ -107,7 +107,7 @@ jobs:
       with:
         files: |
           *.zip
-          Fabrication/*.zip
+          Fabrication/**/*.zip
         tag_name: ${{ steps.get_tag.outputs.version }}
           
 
