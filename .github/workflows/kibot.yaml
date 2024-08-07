@@ -63,6 +63,11 @@ jobs:
         # So we can run a diff between last 2 changes
         fetch-depth: '0'
 
+    - name: git_setup
+      run: |
+        git config --global user.name "release"
+        git config --global user.email "release@github.com"
+
     - name: get_tag
       id: get_tag
       run: echo "version=$(git log --format=%B -n 1 HEAD | tail -n 1)" >> $GITHUB_OUTPUT
