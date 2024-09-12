@@ -12079,7 +12079,8 @@
 	)
 	(symbol
 		(lib_id "Device:Q_NMOS_GSD")
-		(at 250.19 54.61 180)
+		(at 250.19 54.61 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12087,7 +12088,7 @@
 		(dnp no)
 		(uuid "a1616c83-f1c9-4fee-9a61-457e042a4f77")
 		(property "Reference" "Q3"
-			(at 254.254 48.768 0)
+			(at 253.746 51.562 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12096,7 +12097,7 @@
 			)
 		)
 		(property "Value" "DMN6140L-7"
-			(at 264.414 51.308 0)
+			(at 263.906 49.022 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12105,7 +12106,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23"
-			(at 245.11 57.15 0)
+			(at 245.11 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12150,7 +12151,7 @@
 			)
 		)
 		(property "Voltage" "60V"
-			(at 255.27 57.15 0)
+			(at 255.27 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12160,7 +12161,7 @@
 			)
 		)
 		(property "Current" "2A"
-			(at 254.508 59.182 0)
+			(at 254.508 50.038 0)
 			(effects
 				(font
 					(size 1.27 1.27)
